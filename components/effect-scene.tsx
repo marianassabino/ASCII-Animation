@@ -14,7 +14,7 @@ function UserModel(props: ComponentPropsWithoutRef<"group">) {
   const basicMat = useMemo(
     () =>
       new MeshStandardMaterial({
-        color: "#917AFF",
+        color: "#e62e00",
         roughness: 0.24, // Lower = sharper highlights, more contrast
         metalness: 0,
         flatShading: false,
@@ -59,15 +59,15 @@ useGLTF.preload("/models/user-model.glb")
 
 const AUTO_ROTATE_SPEED = 0
 const HOVER_SPIN_MULTIPLIER = 2
-const TILT_FORWARD = 4.6
-const TILT_LEFT = -0.08
+const TILT_FORWARD = 0
+const TILT_LEFT = 0
 
-const CAMERA_BASE_Z = 0
-const CAMERA_ZOOMED_Z = CAMERA_BASE_Z / 1
+const CAMERA_BASE_Z = 20
+const CAMERA_ZOOMED_Z = CAMERA_BASE_Z / 1.1
 
 function DraggableUserModel({ isHovered = false }: { isHovered?: boolean }) {
   const groupRef = useRef<Group>(null)
-  const [rotation, setRotation] = useState({ x: 0, y: Math.PI / 2 })
+  const [rotation, setRotation] = useState({ x: 0, y: -Math.PI / 2})
   const isDragging = useRef(false)
   const lastPointer = useRef({ x: 0, y: 0 })
   const autoY = useRef(0)
@@ -120,8 +120,8 @@ function DraggableUserModel({ isHovered = false }: { isHovered?: boolean }) {
   }, [])
 
   return (
-    <group ref={groupRef} position={[20, -30, -30]}>
-      <UserModel scale={3} />
+    <group ref={groupRef} position={[-130, -30, -80]}>
+      <UserModel scale={14} />
     </group>
   )
 }
@@ -187,12 +187,12 @@ function SceneWithDelayedComposer({
         <EffectComposer>
           <AsciiEffect
             style="standard"
-            cellSize={1}
+            cellSize={1.1}
             invert={true}
             color={true}
             characterSet="terminal"
             volumeShading={true}
-            tintColor="#917AFF"
+            tintColor="#d7f7ca"
             resolution={resolution}
             mousePos={mousePos}
             postfx={{

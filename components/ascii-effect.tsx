@@ -16,7 +16,7 @@ import {
 } from "three"
 
 // ASCII-only, sparse to dense (like classic ASCII art)
-const TERMINAL_SYMBOLS = [".", ":", "-", "=", "+", "*", "#", "%", "@", "0", "O", "N", "M", "W", "B", "X"]
+const TERMINAL_SYMBOLS = ["j", "u", "s", "b", "r", "a", "i", "l"]
 
 function createGlyphTexture(characters: string[], size = 64, font = "62px monospace"): CanvasTexture | null {
   if (characters.length === 0) return null
